@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<!-- Cabecera documento incluye codificación caracteres, hoja de estilo, titulo -->
+
+<head>
+  <meta charset="UTF-8">
+  <title> Contacta con nosotros</title>
+  <link rel="stylesheet" href="CSS/contact.css">
+</head>
+<!-- Cuerpo Documento contiene Título, menu, contenedor con formulario-->
+
+<body>
+  <div id="main">
+    <!--Menu con rutas relativas-->
+    <div class="menu" menu>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="compraLibros.html">Compra Libros</a></li>
+        <li><a href="compraCds.html">Compra CDs</a></li>
+        <li><a class="active" href="registroUsuario.php">Registro Usuario</a></li>
+        <li><a href="Index.html#about">About</a></li>
+      </ul>
+    </div>
+    <!-- Contendor con formulario contiene datos obligatorios, con autocomplete y botón de entrega con AJAX-->
+    <div class="container">
+      <fieldset>
+        <form name="Contacto" enctype="text/plain" onSubmit="averiguarNota(this);">
+          <h1>Contacta con nosotros</h1>
+          <label for="firstName">Nombre:</label><br />
+          <input id="firstName" name="name" type="text" value="" maxlength="30" required autocomplete="given-name" />
+          <br /><br />
+          <label for="surname">Apellidos:</label><br />
+          <input id="surname" name="surname" type="text" value="" maxlength="50" required autocomplete="family-name">
+          <br /><br />
+          <label for="personal_mail">Email:</label><br />
+          <input id="personal_mail" name="personal_mail" type="email" autocomplete="email">
+          <br /><br />
+          ¿Qué necesitas?
+          <input name="queNecesitas" type="radio" value="Poner una queja" checked />Poner una queja
+          <input name="queNecesitas" type="radio" value="Información" />Información
+          <br /><br />
+          Escriba su mensaje:
+          <br /><br />
+          <div class="responsive">
+            <textarea name="mensaje" type="text" rows="20" cols="120"></textarea>
+          </div>
+          <button id="submit" type="submit" onclick="formularioBien()">Submit </button>
+
+      </fieldset>
+    </div>
+  </div>
+  <!-- Petición AJAX que muestra codigo de envío correcto-->
+
+  <script>
+    function loadDoc() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("submit").innerHTML =
+            xmlhttp.responseText;
+        }
+      };
+      xmlhttp.open("GET", "enviadoBien.txt", true);
+      xmlhttp.send();
+    }
+  </script>
+
+</body>
+
+</html>
