@@ -5,5 +5,4 @@ if(!$db){
     echo "servidor caido";
     exit;
 }
-else    echo "OK conex";
 ?>

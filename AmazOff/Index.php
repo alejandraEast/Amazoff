@@ -1,0 +1,107 @@
+<?php
+session_start();
+@ $login=$_SESSION['login'];
+?>
+<html lang="es">
+<!-- Cabecera documento incluye codificación caracteres, palabras claves para posicionamiento web, hoja de estilo, titulo -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" lang="es" content="libros,CDs,album" />
+	<meta name="keywords" lang="en" content="books,cds,albums" />
+	<link rel="stylesheet" href="CSS/estiloIndex.css">
+
+	<title>AmazOff: Compra online de libros y cds</title>
+
+</head>
+<!--Cuerpo del Index Divisiones: Header y Main, footer y petición AJAX-->
+
+<body>
+	<h1 class="pageName"> <img id=amazoff src="imagenes/amazoff.png">
+
+	</h1>
+	<!--Main divisiones: Menu, Article, Aside-->
+
+	<div id="main">
+		<!--Menu con rutas relativas-->
+		<?php include('menu.php');?>
+		<!--Galeria Responsiva de top ventas-->
+		<article>
+
+			<h1 id="cabeceraArticle"> BEST SELLERS ESTA SEMANA</h1>
+
+			<div class="responsive">
+				<div class="gallery">
+					<a target="_blank" href="imagenes/mansplaining.png">
+						<img src="imagenes/mansplaining.png" alt="Libro a la venta: Mansplaining">
+					</a>
+					<div class="desc">50% FOR WOMEN WHICH MEANS YOU PAY LESS</div>
+
+				</div>
+			</div>
+
+			<div class="responsive">
+				<div class="gallery">
+					<a target="_blank" href="imagenes/jabbaScript.png">
+						<img src="imagenes/jabbaScript.png" alt="Libro a la venta:jabbaScript">
+					</a>
+					<div class="desc">JABBA, THE SCRIPT</div>
+				</div>
+			</div>
+
+			<div class="responsive">
+				<div class="gallery">
+					<a target="_blank" href="imagenes/EngineThatCould.png">
+						<img src="imagenes/EngineThatCould.png" alt="Libro a la venta:Little Engine that can´t">
+					</a>
+					<div class="desc">THE LITTLE ENGINE THAT JUST COULDN´T</div>
+				</div>
+			</div>
+
+		</article>
+		<!--Aside que contiene Noticias-->
+		<aside class="news">
+			<h2 id="cabeceraAside"> NOTICIAS</h2>
+			<h3 id="contenidoNoticias">LIBROS</h3>
+			<h4>Roberto Santiago escribe la novela 25 de "Los Futbolisimos"</h4>
+			<h3 id="contenidoNoticias">LIBROS</h3>
+			<h4>J.K.Rowling anuncia que se dice "leviouusa" no "leviosaaaa"</h4>
+			<h3 id="contenidoNoticias">CDs</h3>
+			<h4>One Direction vuelven a juntarse y sacan nuevo CD</h4>
+
+
+		</aside>
+
+	</div>
+	<!--Footer con contacto y boton con petición AJAX-->
+	<a id="about">
+		<footer id=foot>
+			<h2>ABOUT US</h2>
+			<p>We sell ridiculous books</p>
+			<p><a href="mailto:info@Amazoff.es">Email: info@AmazOff.es</a></p>
+			<p>Instagram :@Amazoff </p>
+			<p>Facebook :Amazoff </p>
+			<button id="meAburro" type="button" onclick="meaburro()">Si te aburres pulsa aqui!</button>
+
+		</footer>
+	</a>
+
+	<!--Petición AJAX-->
+	<script>
+
+		function meaburro() {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("foot").innerHTML = xmlhttp.responseText;
+				}
+			};
+			xmlhttp.open("GET", "chiste.txt", true);
+			xmlhttp.send();
+		}
+	</script>
+</body>
+
+
+</html>

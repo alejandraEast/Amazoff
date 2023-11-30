@@ -13,13 +13,7 @@
   <div id="main">
     <!--Menu con rutas relativas AÑADIR ROLLO HEADER O ALGO A LO LARGO DE TODO??-->
     <div class="menu" menu>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="compraLibros.html">Compra Libros</a></li>
-        <li><a href="compraCds.html">Compra CDs</a></li>
-        <li><a class="active" href="registroUsuario.php">Registro Usuario</a></li>
-        <li><a href="Index.html#about">About</a></li>
-      </ul>
+    <?php include('menu.php');?>
     </div>
     <!-- Contendor con formulario contiene datos obligatorios, con autocomplete y botón de entrega con AJAX-->
     <div class="container">
@@ -31,7 +25,7 @@
           <br /><br />
           <!--Añadir password y login etc a CSS-->
          <label for="password">Password:</label><br />
-          <input id="pass" name="pass" type="text"  maxlength="100" required autofocus autocomplete="new-password" />
+          <input id="pass" name="pass" type="password"  maxlength="100" required autofocus autocomplete="new-password" />
           <br /><br />
           <label for="firstName">Nombre:</label><br />
           <input id="nombre" name="nombre" type="text"  maxlength="100" required autofocus autocomplete="given-name" />
