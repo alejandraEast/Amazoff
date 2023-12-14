@@ -23,6 +23,11 @@ session_start();
 	</h1>
 	<!--Main divisiones: Menu, Article, Aside-->
 
+	<?php
+echo "<pre>";
+	var_dump($_SESSION);
+	echo "</pre>";
+	?>
 	<div id="main">
 		<!--Menu con rutas relativas-->
 		<?php include('menu.php');?>

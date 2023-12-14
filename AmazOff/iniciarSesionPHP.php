@@ -10,7 +10,7 @@ function test_input($data) {
   }
 $login = test_input($_POST['login']);
 $pass = test_input($_POST['pass']);
-echo "oh no";
+
 
 $query="select * from usuarios where login='" . $login . "' and pass='" . $pass . "'";
 $resultado=mysqli_query($db,$query);

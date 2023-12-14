@@ -7,6 +7,7 @@
 			<li><a href="productos.php?categoria=Libro">Compra Libros</a></li>
 			<li><a href="productos.php?categoria=CD">Compra CDs</a></li>
 			<li><a href="registroUsuario.php">Registro Usuario</a></li>
+			<li><a href="buscador.php">Busca productos</a></li>
 			<li><a href="index.php#about">About</a></li>
 			<?php 
 				if(@$login) 

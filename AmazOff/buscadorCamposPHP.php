@@ -21,7 +21,11 @@ session_start();
         <!-- Galeria responsiva de libros-->
         <article>
             <?php
-                @ $palabraClave=test_input($_POST['palabraClave']);
+                @ $titulo=test_input($_POST['titulo']);
+                @ $descrip=test_input($_POST['descrip']);
+                @ $categoria=test_input($_POST['categoria']);
+                @ $precio=test_input($_POST['precio']);
+                @ $id_prod;
                 function test_input($data) {
                   $data = trim($data);
                   $data = addslashes($data);
@@ -31,22 +35,32 @@ session_start();
                 }
 
                 include('conexBD.php');
-                $query = "select * from productos where titulo like '%". $palabraClave . "%' or descrip like '%". $palabraClave . "%' or categoria like '%". $palabraClave . "%'";
-              
+                $query = "select * from productos where titulo like '%". $titulo . "%' and descrip like '%". $descrip . "%' and categoria like '%". $categoria . "%'";
+               
+                if(is_numeric($precio))
+                  
+                $query .= " and precio <=" . $precio;
+
                 $resultado=mysqli_query($db,$query);
                 $num=mysqli_num_rows($resultado);
                 for($i=0;$i<$num;$i++){
                     $fila=mysqli_fetch_array($resultado);
+                    echo $fila['id_prod'];
                     echo '<div class="responsive">';
                     echo '<div class="gallery">';
                     echo '<a target="_blank" href="imagenes/'.$fila['imagen'] . '">';
                     echo '<img src="imagenes/'.$fila['imagen'] . '" alt="'.$fila['titulo'] . '">';
                     echo '</a>';
                     echo '<div class="desc">'.$fila['descrip'] . '. Pvp '.$fila['precio'] . ' €<br>';
-                    echo   ' <button>añadir a la cesta</button>    </div>';
+                    echo '<form action="carritoPHP.php" method="POST" >';
+                    echo  '<input type="hidden" name="id_prod" value="'.$fila['id_prod'] .'" />';
+                    echo   ' <button type="submit" >añadir a la cesta</button>  </div>';
+                    echo '</form>';
                     echo '</div>';
                     echo '</div>';
                 }
+                
+
                 mysqli_free_result($resultado);
 
                 mysqli_close($db);
@@ -58,3 +72,5 @@ session_start();
     </div>
 
 </body>
+
+    
